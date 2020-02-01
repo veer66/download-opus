@@ -9,6 +9,8 @@ moses_names = corpora.select {|c| c["preprocessing"] == "moses"}
                      .map {|c| c["corpus"]}
 xml_names = corpora.select {|c| c["preprocessing"] == "xml"}
                    .select {|c| c["latest"]}
+                   .select {|c| c["source"] == $source}
+                   .select {|c| c["target"] == $target}
                    .map {|c| c["corpus"]}
 names = moses_names & xml_names
 
