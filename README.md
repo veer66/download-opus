@@ -1,9 +1,7 @@
-# download-opus
-
-download-opus is a tool for downloading OPUS parallel corpora (in English-Thai for now).
+# prepare-free-parallel-corpora
 
 
-## How to download
+## OPUS
 
 ````
 #!/bin/sh
