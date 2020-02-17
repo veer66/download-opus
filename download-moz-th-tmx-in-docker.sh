@@ -7,4 +7,4 @@ docker run \
        -v $(pwd):/work \
        -w /work \
        ruby \
-       ruby download-opus.rb
+       sh download-moz-th-tmx.sh
