@@ -14,8 +14,6 @@
 
 (defn validate-args [args]
   (let [{:keys [arguments summary options]} (parse-opts args cli-options)]
-    (prn options)
-    (prn arguments)
     (cond (not= (count arguments) 1)
           {:exit-message (usage summary)}
           :else
