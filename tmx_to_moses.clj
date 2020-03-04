@@ -4,7 +4,7 @@
          '[clojure.data.xml :as xml])
 
 (def cli-options
-  [["-d" "--output-dir DIR" "Output path to folder" :default "."]])
+  [["-p" "--output-prefix PREFIX" "Output path prefix" :default "."]])
 
 (defn usage
   [summary]
@@ -94,12 +94,12 @@
   (string/replace lang #"-.+" ""))
 
 (defn tmx->moses
-  [{:keys [output-dir tmx-file-path]}]
+  [{:keys [output-prefix tmx-file-path]}]
   (with-open [r0 (io/reader tmx-file-path)
               r  (io/reader tmx-file-path)]
     (let [tu (-> r0 extract first)
           langs (map :lang tu)
-          add-prefix #(str output-dir java.io.File/separator %)
+          add-prefix #(str output-prefix %)
           lang-files (reduce (fn [files lang]
                           (assoc files
                                  lang
@@ -118,7 +118,7 @@
 
 (comment
   (tmx->moses {:tmx-file-path "corpus/moz/latest/mozilla_en-US_th_bca3a7cdc6ed6c88a21bb8e18c22eb6c_normal.tmx"
-               :output-dir "."}))
+               :output-prefix "."}))
 
 (let [{:keys [exit-message convert-info]} (validate-args *command-line-args*)]
    (cond
