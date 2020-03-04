@@ -1,4 +1,5 @@
 #!/bin/sh
+
 docker run \
        --rm \
        -it \
@@ -8,5 +9,5 @@ docker run \
        -e HOME=/work \
        -e LANG=C.UTF-8 \
        --net=host \
-       clojure:tools-deps \
+       prepare-free-parallel-corpora bash
        bash
