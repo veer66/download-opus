@@ -4,6 +4,9 @@ if [ $# -ne 1 ]; then
     echo "Usage $0: <CORPUS NAME>"
     exit 1
 fi
+
+set -x
+
 SRC=en
 TGT=th
 LANGPAIR=$SRC-$TGT
@@ -17,6 +20,7 @@ OUTPUTDIR=$(pwd)/corpus/$CORPUS_NAME/latest/moses
 mkdir -p $OUTPUTDIR
 CURR_DIR=$(pwd)
 cd $TMPDIR
-zip -f $OUTPUTDIR/$LANGPAIR.txt.zip $CORPUS_NAME.$LANGPAIR.$SRC $CORPUS_NAME.$LANGPAIR.$TGT
+ls -al
+zip $OUTPUTDIR/$LANGPAIR.txt.zip $CORPUS_NAME.$LANGPAIR.$SRC $CORPUS_NAME.$LANGPAIR.$TGT
 cd $CURR_DIR
 rm -rf $TMPDIR
